@@ -1,4 +1,8 @@
 <template>
-  <h1 class="h-screen bg-amber-200 flex text-center items-center justify-center text-4xl font-bold">Index view of home
-    page</h1>
+  <h1 class="   text-4xl font-bold">Index view of home
+    page change</h1>
+  <div>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore sequi quia corporis? Aperiam quidem totam
+      doloribus ab quisquam distinctio unde, quibusdam dolor libero quos quia odio soluta. Esse, fugiat laborum.</p>
+  </div>
 </template>
