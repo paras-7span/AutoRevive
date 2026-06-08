@@ -2,6 +2,9 @@
   "semi": false,
   "singleQuote": true,
   "tabWidth": 2,
-  "trailingComma": "es5",
-  "printWidth": 100
+  "printWidth": 100,
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "vueIndentScriptAndStyle": true,
+  "endOfLine": "crlf"
 }

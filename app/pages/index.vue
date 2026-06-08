@@ -1,3 +1,4 @@
 <template>
-  <h1>Index view of page</h1>
+  <h1 class="h-screen bg-amber-200 flex text-center items-center justify-center text-4xl font-bold">Index view of home
+    page</h1>
 </template>
