@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui', 'nuxt-directus', '@nuxt/image'],
+  modules: ['@nuxt/ui', 'nuxt-directus', '@nuxt/image', '@vueuse/nuxt'],
   runtimeConfig: {
     public: {
       assetsUrl: 'https://directus-dj3o.onrender.com/assets',
