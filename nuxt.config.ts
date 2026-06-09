@@ -1,9 +1,19 @@
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui', 'nuxt-directus', '@nuxt/image'],
+  modules: ['@nuxt/ui', 'nuxt-directus', '@nuxt/image', '@vueuse/nuxt'],
+  runtimeConfig: {
+    public: {
+      assetsUrl: 'https://directus-dj3o.onrender.com/assets',
+      directus: {
+        url: 'https://directus-dj3o.onrender.com'
+      }
+    }
+  },
 
   devtools: {
     enabled: true
   },
+
+
 
   css: ['~/assets/css/main.css'],
 
@@ -11,14 +21,7 @@ export default defineNuxtConfig({
     '/': { prerender: true }
   },
 
-  compatibilityDate: '2025-01-15',
 
-  eslint: {
-    config: {
-      stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs'
-      }
-    }
-  }
+  compatibilityDate: '2025-01-15'
+
 })
