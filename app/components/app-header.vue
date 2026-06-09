@@ -17,8 +17,10 @@ const searchquery = ref('')
 
         <template #default>
             <div class="flex gap-3">
-                <UButton label="Home" to="/" variant="ghost" />
-                <UButton label="Buy Cars" to="/cars" variant="ghost" />
+                <UButton label="Home" to="/" variant="ghost" class="text-black hover:bg-primary-600 hover:text-white"
+                    color="neutral" />
+                <UButton label="Buy Cars" to="/cars" variant="ghost"
+                    class="text-black hover:bg-secondary-600 hover:text-white" color="neutral" />
                 <!-- <UButton label="Contact" to="/contact" variant="ghost" /> -->
             </div>
         </template>
