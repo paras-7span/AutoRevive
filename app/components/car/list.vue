@@ -2,7 +2,7 @@
     <UContainer class="flex flex-col lg:flex-row gap-6  mx-auto">
         <!-- Left Filter Panel -->
         <div
-            class="w-full lg:w-1/5 flex flex-col gap-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md sticky h-fit top-20 py-4 px-4  shadow-xs">
+            class="w-full lg:w-2/5 flex flex-col gap-5 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md sticky h-fit top-20 py-4 px-4  shadow-xs">
             <div
                 class="flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800 pb-3 mb-1">
                 <h3 class="font-bold text-lg text-neutral-800 dark:text-neutral-100 flex items-center gap-2">
@@ -19,7 +19,7 @@
                 <UBadge variant="subtle" class="mb-2 text-white bg-secondary-500 ">Price Range</UBadge>
                 <USlider v-model="priceRange" color="neutral" :min="100000" :max="2500000" :step="10000"
                     :default-value="100000" />
-                <p>{{ priceRange }}</p>
+                <p>{{ priceRange }}Rs.</p>
             </div>
 
             <div class="flex flex-col gap-2">
@@ -68,7 +68,7 @@
             </div>
         </div>
 
-        <div class="w-4/5">
+        <div class="w-full">
             <div v-if="isloading" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <div v-for="i in 8" :key="i">
                     <div class="w-full flex flex-col gap-2">
@@ -125,6 +125,7 @@ const ownerValue = ref([])
 const cars = ref([])
 const error = ref(null)
 const isloading = ref(true)
+
 async function fetchcars() {
     isloading.value = true;
     const baseFilters = [
@@ -400,11 +401,6 @@ const { data: ownerships } = await useAsyncData
 isownershipsloading.value = false;
 
 console.log("Cars", cars.value)
-// console.log("Brands", Brands.value)
-// console.log("FuelType", FuelType.value)
-// console.log("Transmissions", Transmissions.value)
-// console.log("BodyTypes", BodyTypes.value)
-// console.log("Ownerships", Ownerships.value)
 
 const resetFilters = () => {
     priceRange.value = null
