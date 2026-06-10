@@ -54,27 +54,13 @@
 
 <!-- =============================================================== -->
 <script setup>
-import { ref, watch, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
+
 const { getItems } = useDirectusItems()
-const router = useRouter()
-const route = useRoute()
-const priceRange = ref([])
-const registrationYear = ref()
-const kmDriven = ref()
-const brandValue = ref([])
-const fuelValue = ref([])
-const transmissionValue = ref([])
-const bodyValue = ref([])
-const ownerValue = ref([])
+
 const cars = ref([])
 const error = ref(null)
 const isloading = ref(true)
-const searchquery = ref(route.query.q || '')
-const { brands, isbrandsloading, fetchBrands } = useBrands()
-const { fuelTypes, isfueltypesloading, fetchFuelTypes } = useFuelTypes()
-const { transmissions, istransmissionloading, fetchTransmissions } = useTransmissions()
-const { bodyTypes, isbodytypesloading, fetchBodyTypes } = useBodyTypes()
-const { ownerships, isownershiploading, fetchOwnerships } = useOwnerships()
 
 async function fetchcars() {
     isloading.value = true
@@ -84,24 +70,34 @@ async function fetchcars() {
             status: { _eq: 'published' }
         }
     ]
+
+
     if (searchquery.value) {
         baseFilters.push({
             _or: [
                 {
-                    model: { _icontains: searchquery.value }
-                },
-                {
-                    brand: {
-                        name: { _icontains: searchquery.value }
+                    model: {
+                        _icontains: searchquery.value
                     }
                 },
                 {
-                    variant: { _icontains: searchquery.value }
+                    brand: {
+                        name: {
+                            _icontains: searchquery.value
+                        }
+                    }
+                },
+                {
+                    variant: {
+                        _icontains: searchquery.value
+                    }
                 }
             ]
         })
     }
-    if (priceRange.value.length == 2) {
+
+
+    if (priceRange.value.length === 2) {
         baseFilters.push({
             price_range: {
                 _between: [
@@ -114,13 +110,17 @@ async function fetchcars() {
 
     if (registrationYear.value > 2005) {
         baseFilters.push({
-            registration_year: { _gte: registrationYear.value }
+            registration_year: {
+                _gte: registrationYear.value
+            }
         })
     }
 
     if (kmDriven.value) {
         baseFilters.push({
-            km_driven: { _lte: kmDriven.value }
+            km_driven: {
+                _lte: kmDriven.value
+            }
         })
     }
 
@@ -143,6 +143,7 @@ async function fetchcars() {
             }
         })
     }
+
 
     if (transmissionValue.value.length) {
         baseFilters.push({
@@ -177,20 +178,39 @@ async function fetchcars() {
             }
         })
     }
-    try {
-        console.log("baseFilters , ", baseFilters);
 
+    try {
         const res = await getItems({
             collection: 'cars',
             params: {
                 fields: [
-                    'id', 'brand.name', 'model', 'variant', 'milage', 'km_driven', 'discounted_price', 'original_price', 'emi_per_month', 'cover_image', 'slug', 'price_range', 'fuel_type.name', 'transmission.name', 'body_type.body_types_id.name', 'ownership.ownerships_id.name', 'additional_badge', 'registration_year', 'engine'
+                    'id',
+                    'brand.name',
+                    'model',
+                    'variant',
+                    'milage',
+                    'km_driven',
+                    'discounted_price',
+                    'original_price',
+                    'emi_per_month',
+                    'cover_image',
+                    'slug',
+                    'price_range',
+                    'fuel_type.name',
+                    'transmission.name',
+                    'body_type.body_types_id.name',
+                    'ownership.ownerships_id.name',
+                    'additional_badge',
+                    'registration_year',
+                    'engine'
                 ],
+
                 filter: {
                     _and: baseFilters
                 }
             }
         })
+
         cars.value = res.map(item => ({
             id: `/cars/${item?.id}`,
             brand: item?.brand?.name || '',
@@ -198,18 +218,30 @@ async function fetchcars() {
             variant: item?.variant || '',
             mileage: item?.mileage || '',
             km_driven: item?.km_driven || 0,
-            discounted_price: item?.discounted_price || 0,
-            original_price: item?.original_price || 0,
-            emi_per_month: item?.emi_per_month || 0,
+            discounted_price:
+                item?.discounted_price || 0,
+            original_price:
+                item?.original_price || 0,
+            emi_per_month:
+                item?.emi_per_month || 0,
             cover_image: item?.cover_image || '',
             path: item?.slug,
-            price_range: item?.price_range || '',
-            fuel_type: item?.fuel_type?.name || '',
-            transmission: item?.transmission?.name || '',
-            body_type: item?.body_type?.[0]?.body_types_id?.name || '',
-            ownership: item?.ownership?.[0]?.ownerships_id?.name || '',
-            additional_badge: item?.additional_badge || '',
-            registration_year: item?.registration_year || '',
+            price_range:
+                item?.price_range || '',
+            fuel_type:
+                item?.fuel_type?.name || '',
+            transmission:
+                item?.transmission?.name || '',
+            body_type:
+                item?.body_type?.[0]?.body_types_id
+                    ?.name || '',
+            ownership:
+                item?.ownership?.[0]
+                    ?.ownerships_id?.name || '',
+            additional_badge:
+                item?.additional_badge || '',
+            registration_year:
+                item?.registration_year || '',
             engine: item?.engine || ''
         }))
 
@@ -221,87 +253,41 @@ async function fetchcars() {
     }
 }
 
-// PRICE RANGE FROM DIRECTUS
-const minPrice = ref(0)
-const maxPrice = ref(0)
+const {
+    priceRange,
+    registrationYear,
+    kmDriven,
 
-const { data: priceData } = await useFetch(
-    'https://directus-dj3o.onrender.com/items/cars?fields=price_range'
-)
+    brandValue,
+    fuelValue,
+    transmissionValue,
+    bodyValue,
+    ownerValue,
 
-if (priceData.value?.data?.length) {
-    const prices = priceData.value.data
-        .map(c => Number(c.price_range))
-        .filter(Boolean)
+    searchquery,
 
-    minPrice.value = Math.min(...prices)
-    maxPrice.value = Math.max(...prices)
+    minPrice,
+    maxPrice,
 
-    priceRange.value = [minPrice.value, maxPrice.value]
-}
+    brands,
+    fuelTypes,
+    transmissions,
+    bodyTypes,
+    ownerships,
 
-watch(
-    [
-        priceRange,
-        registrationYear,
-        kmDriven,
-        brandValue,
-        fuelValue,
-        transmissionValue,
-        bodyValue,
-        ownerValue
-    ],
-    () => {
-        router.push({
-            query: {
-                q: route.query.q || '',
-                price_range: priceRange.value || '',
-                registration_year: registrationYear.value || '',
-                km_driven: kmDriven.value || '',
-                brand: brandValue.value || '',
-                fuel_type: fuelValue.value || '',
-                transmission: transmissionValue.value || '',
-                body_type: bodyValue.value || '',
-                owner: ownerValue.value || ''
-            }
-        })
-        fetchcars()
-    },
-    { deep: true }
-)
+    isbrandsloading,
+    isfueltypesloading,
+    istransmissionloading,
+    isbodytypesloading,
+    isownershiploading,
 
-watch(
-    () => route.query.q,
-    (newQ) => {
-        searchquery.value = newQ || ''
-        fetchcars()
-    }
-)
-
-
-
-const resetFilters = () => {
-    priceRange.value = [minPrice.value, maxPrice.value]
-    registrationYear.value = (2005)
-    kmDriven.value = 0
-    brandValue.value = []
-    fuelValue.value = []
-    transmissionValue.value = []
-    bodyValue.value = []
-    ownerValue.value = []
-    router.push({
-        path: '/cars',
-    })
-}
-
-
+    // METHODS
+    resetFilters,
+    initFilters
+} = await useCarFilters(fetchcars)
 
 onMounted(async () => {
     await fetchcars()
-    await fetchBrands()
-    await fetchFuelTypes()
-    await fetchTransmissions()
-    await fetchBodyTypes()
-    await fetchOwnerships()
+    await initFilters()
 })
 </script>

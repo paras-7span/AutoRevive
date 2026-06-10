@@ -29,20 +29,7 @@
                 </p>
             </template>
         </UAccordion>
-        <!-- <div class="flex flex-col gap-2">
-            <span class="text-sm font-semibold text-black mb-1">
-                Price Range
-            </span>
 
-            <USlider :model-value="priceRange" @update:model-value="$emit('update:priceRange', $event)" :min="minPrice"
-                :max="maxPrice" :step="50000" color="neutral" />
-
-            <p v-if="priceRange?.length === 2">
-                ₹{{ priceRange[0]?.toLocaleString() }}
-                -
-                ₹{{ priceRange[1]?.toLocaleString() }}
-            </p>
-        </div> -->
 
         <!-- BRANDS -->
         <div v-if="isbrandsloading" class="flex items-center justify-center">
@@ -203,6 +190,7 @@
 </template>
 
 <script setup>
+// what data parent sends to child
 defineProps({
     priceRange: Array,
     minPrice: Number,
@@ -230,6 +218,9 @@ defineProps({
     isownershiploading: Boolean
 })
 
+
+
+// what events child can send to parent
 defineEmits([
     'update:priceRange',
     'update:registrationYear',
