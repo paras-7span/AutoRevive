@@ -1,5 +1,5 @@
 <template>
-    <UContainer class="flex flex-col lg:flex-row gap-6 mx-auto">
+    <UContainer class="flex flex-col lg:flex-row gap-6 mx-auto ">
 
         <!-- FILTER COMPONENT -->
         <CarFilters v-model:priceRange="priceRange" v-model:registrationYear="registrationYear"
@@ -23,7 +23,7 @@
 
             <!-- LOADING -->
             <div v-if="isloading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div v-for="i in 3" :key="i">
+                <div v-for="i in 6" :key="i">
                     <div class="w-full flex flex-col gap-2">
                         <USkeleton class="h-50 w-full" />
                         <USkeleton class="h-10 w-full" />
@@ -61,7 +61,6 @@
 
 <!-- =============================================================== -->
 <script setup>
-import { ref, onMounted } from 'vue'
 
 const { getItems } = useDirectusItems()
 
@@ -283,7 +282,9 @@ async function fetchcars() {
     } finally {
         isloading.value = false
     }
+    console.log(cars.value);
 }
+
 
 const {
     priceRange,
