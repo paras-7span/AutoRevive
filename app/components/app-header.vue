@@ -1,5 +1,4 @@
 <script setup>
-import { ref } from 'vue'
 import { useRouter, useRoute } from '#app';
 const router = useRouter();
 const route = useRoute();
@@ -41,9 +40,9 @@ const debouncegetcars = useDebounceFn(() => {
 
         <template #default>
             <div class="flex gap-3">
-                <UButton label="Home" to="/" variant="ghost" class="text-black hover:bg-primary-600 hover:text-white"
-                    color="neutral" />
-                <UButton label="Buy Cars" to="/cars" variant="ghost"
+                <UButton icon="i-solar:home-outline" label="Home" to="/" variant="ghost"
+                    class="text-black hover:bg-primary-600 hover:text-white" color="neutral" />
+                <UButton icon="material-symbols:directions-car-outline" label="Buy Cars" to="/cars" variant="ghost"
                     class="text-black hover:bg-secondary-600 hover:text-white" color="neutral" />
                 <!-- <UButton label="Contact" to="/contact" variant="ghost" /> -->
             </div>
