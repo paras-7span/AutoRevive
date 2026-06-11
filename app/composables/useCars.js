@@ -5,14 +5,15 @@ export const useCarFilters = async (fetchcars) => {
     const route = useRoute()
 
     const priceRange = ref([])
-    const registrationYear = ref(2005)
-    const kmDriven = ref(0)
+    const registrationYear = ref([])
+    const kmDriven = ref([])
 
     const brandValue = ref([])
     const fuelValue = ref([])
     const transmissionValue = ref([])
     const bodyValue = ref([])
     const ownerValue = ref([])
+    const sortBy = ref(null)
 
     const searchquery = ref(route.query.q || '')
 
@@ -48,27 +49,49 @@ export const useCarFilters = async (fetchcars) => {
 
     const minPrice = ref(0)
     const maxPrice = ref(0)
+    const minKm = ref(0)
+    const maxKm = ref(100000)
+    const minYear = ref(2005)
+    const maxYear = ref(new Date().getFullYear())
 
     const { getItems } = useDirectusItems()
-    const priceData = await getItems({
+    const rangeData = await getItems({
         collection: 'cars',
         params: {
-            fields: ['price_range']
+            fields: ['original_price', 'km_driven', 'registration_year']
         }
     })
 
-    if (priceData?.length) {
-        const prices = priceData
-            .map(c => Number(c.price_range))
-            .filter(Boolean)
+    if (rangeData?.length) {
+        const prices = rangeData
+            .map(c => Number(String(c.original_price || '').replace(/,/g, '')))
+            .filter(p => !isNaN(p) && p > 0)
 
-        minPrice.value = Math.min(...prices)
-        maxPrice.value = Math.max(...prices)
+        if (prices.length) {
+            minPrice.value = Math.min(...prices)
+            maxPrice.value = Math.max(...prices)
+            priceRange.value = [minPrice.value, maxPrice.value]
+        }
 
-        priceRange.value = [
-            minPrice.value,
-            maxPrice.value
-        ]
+        const kms = rangeData
+            .map(c => Number(c.km_driven))
+            .filter(p => !isNaN(p) && p >= 0)
+
+        if (kms.length) {
+            minKm.value = Math.min(...kms)
+            maxKm.value = Math.max(...kms)
+            kmDriven.value = [minKm.value, maxKm.value]
+        }
+
+        const years = rangeData
+            .map(c => Number(c.registration_year))
+            .filter(p => !isNaN(p) && p > 0)
+
+        if (years.length) {
+            minYear.value = Math.min(...years)
+            maxYear.value = Math.max(...years)
+            registrationYear.value = [minYear.value, maxYear.value]
+        }
     }
 
     watch(
@@ -80,22 +103,26 @@ export const useCarFilters = async (fetchcars) => {
             fuelValue,
             transmissionValue,
             bodyValue,
-            ownerValue
+            ownerValue,
+            sortBy
         ],
         () => {
             router.push({
                 query: {
                     q: route.query.q || '',
-                    price_range: priceRange.value || '',
-                    registration_year:
-                        registrationYear.value || '',
-                    km_driven: kmDriven.value || '',
+                    price_min: priceRange.value[0] || '',
+                    price_max: priceRange.value[1] || '',
+                    year_min: registrationYear.value[0] || '',
+                    year_max: registrationYear.value[1] || '',
+                    km_min: kmDriven.value[0] || '',
+                    km_max: kmDriven.value[1] || '',
                     brand: brandValue.value || '',
                     fuel_type: fuelValue.value || '',
                     transmission:
                         transmissionValue.value || '',
                     body_type: bodyValue.value || '',
-                    owner: ownerValue.value || ''
+                    owner: ownerValue.value || '',
+                    sort_by: sortBy.value || ''
                 }
             })
 
@@ -117,15 +144,15 @@ export const useCarFilters = async (fetchcars) => {
             minPrice.value,
             maxPrice.value
         ]
-
-        registrationYear.value = 2005
-        kmDriven.value = 0
-
+        registrationYear.value = [minYear.value, maxYear.value]
+        kmDriven.value = [minKm.value, maxKm.value]
         brandValue.value = []
         fuelValue.value = []
         transmissionValue.value = []
         bodyValue.value = []
         ownerValue.value = []
+        sortBy.value = null
+        searchquery.value = ''
 
         router.push({
             path: '/cars'
@@ -153,10 +180,16 @@ export const useCarFilters = async (fetchcars) => {
         bodyValue,
         ownerValue,
 
+        sortBy,
+
         searchquery,
 
         minPrice,
         maxPrice,
+        minKm,
+        maxKm,
+        minYear,
+        maxYear,
 
         brands,
         fuelTypes,

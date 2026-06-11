@@ -5,18 +5,25 @@
         <CarFilters v-model:priceRange="priceRange" v-model:registrationYear="registrationYear"
             v-model:kmDriven="kmDriven" v-model:brandValue="brandValue" v-model:fuelValue="fuelValue"
             v-model:transmissionValue="transmissionValue" v-model:bodyValue="bodyValue" v-model:ownerValue="ownerValue"
-            :minPrice="minPrice" :maxPrice="maxPrice" :brands="brands" :fuelTypes="fuelTypes"
-            :transmissions="transmissions" :bodyTypes="bodyTypes" :ownerships="ownerships"
-            :isbrandsloading="isbrandsloading" :isfueltypesloading="isfueltypesloading"
-            :istransmissionloading="istransmissionloading" :isbodytypesloading="isbodytypesloading"
-            :isownershiploading="isownershiploading" @resetFilters="resetFilters" />
+            :minPrice="minPrice" :maxPrice="maxPrice" :minKm="minKm" :maxKm="maxKm" :minYear="minYear"
+            :maxYear="maxYear" :brands="brands" :fuelTypes="fuelTypes" :transmissions="transmissions"
+            :bodyTypes="bodyTypes" :ownerships="ownerships" :isbrandsloading="isbrandsloading"
+            :isfueltypesloading="isfueltypesloading" :istransmissionloading="istransmissionloading"
+            :isbodytypesloading="isbodytypesloading" :isownershiploading="isownershiploading"
+            @resetFilters="resetFilters" />
 
         <!-- RIGHT SIDE -->
-        <div class="w-full lg:w-4/5">
+        <div class="w-full ">
+            <div class="w-full  p-2 flex items-center justify-end">
+                <UDropdownMenu :items="sortOptions">
+                    <UButton :label="sortBy ? sortOptions.flat().find(o => o.value === sortBy)?.label : 'Sort By'"
+                        color="neutral" variant="outline" icon="material-symbols:sort" />
+                </UDropdownMenu>
+            </div>
 
             <!-- LOADING -->
             <div v-if="isloading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div v-for="i in 8" :key="i">
+                <div v-for="i in 3" :key="i">
                     <div class="w-full flex flex-col gap-2">
                         <USkeleton class="h-50 w-full" />
                         <USkeleton class="h-10 w-full" />
@@ -58,6 +65,16 @@ import { ref, onMounted } from 'vue'
 
 const { getItems } = useDirectusItems()
 
+const sortOptions = [
+    [
+        { label: 'Price: Low to High', value: 'price_low_to_high', onSelect: () => { sortBy.value = 'price_low_to_high' } },
+        { label: 'Price: High to Low', value: 'price_high_to_low', onSelect: () => { sortBy.value = 'price_high_to_low' } },
+        { label: 'Newest First', value: 'newest_first', onSelect: () => { sortBy.value = 'newest_first' } },
+        { label: 'Oldest First', value: 'oldest_first', onSelect: () => { sortBy.value = 'oldest_first' } },
+        { label: 'KM: Low to High', value: 'km_low_to_high', onSelect: () => { sortBy.value = 'km_low_to_high' } },
+    ]
+]
+
 const cars = ref([])
 const error = ref(null)
 const isloading = ref(true)
@@ -96,30 +113,24 @@ async function fetchcars() {
         })
     }
 
-
-    if (priceRange.value.length === 2) {
+    if (registrationYear.value.length === 2) {
         baseFilters.push({
-            price_range: {
+            registration_year: {
                 _between: [
-                    Number(priceRange.value[0]),
-                    Number(priceRange.value[1])
+                    Number(registrationYear.value[0]),
+                    Number(registrationYear.value[1])
                 ]
             }
         })
     }
 
-    if (registrationYear.value > 2005) {
-        baseFilters.push({
-            registration_year: {
-                _gte: registrationYear.value
-            }
-        })
-    }
-
-    if (kmDriven.value) {
+    if (kmDriven.value.length === 2) {
         baseFilters.push({
             km_driven: {
-                _lte: kmDriven.value
+                _between: [
+                    Number(kmDriven.value[0]),
+                    Number(kmDriven.value[1])
+                ]
             }
         })
     }
@@ -195,7 +206,6 @@ async function fetchcars() {
                     'emi_per_month',
                     'cover_image',
                     'slug',
-                    'price_range',
                     'fuel_type.name',
                     'transmission.name',
                     'body_type.body_types_id.name',
@@ -207,11 +217,35 @@ async function fetchcars() {
 
                 filter: {
                     _and: baseFilters
-                }
+                },
+
+                sort: (() => {
+                    const map = {
+                        price_low_to_high: ['-original_price'],
+                        price_high_to_low: ['original_price'],
+                        newest_first: ['-registration_year'],
+                        oldest_first: ['registration_year'],
+                        km_low_to_high: ['km_driven'],
+                    }
+                    return sortBy.value ? map[sortBy.value] : ['-date_created']
+                })()
             }
         })
 
-        cars.value = res.map(item => ({
+        const parsePrice = s => Number(String(s || '').replace(/,/g, ''))
+
+        const [minP, maxP] = priceRange.value.length === 2
+            ? [priceRange.value[0], priceRange.value[1]]
+            : [null, null]
+
+        const filtered = (minP !== null)
+            ? res.filter(item => {
+                const p = parsePrice(item.original_price)
+                return p >= minP && p <= maxP
+            })
+            : res
+
+        cars.value = filtered.map(item => ({
             id: `/cars/${item?.id}`,
             brand: item?.brand?.name || '',
             model: item?.model || '',
@@ -221,13 +255,11 @@ async function fetchcars() {
             discounted_price:
                 item?.discounted_price || 0,
             original_price:
-                item?.original_price || 0,
+                item?.original_price || '',
             emi_per_month:
                 item?.emi_per_month || 0,
             cover_image: item?.cover_image || '',
             path: item?.slug,
-            price_range:
-                item?.price_range || '',
             fuel_type:
                 item?.fuel_type?.name || '',
             transmission:
@@ -264,10 +296,16 @@ const {
     bodyValue,
     ownerValue,
 
+    sortBy,
+
     searchquery,
 
     minPrice,
     maxPrice,
+    minKm,
+    maxKm,
+    minYear,
+    maxYear,
 
     brands,
     fuelTypes,
