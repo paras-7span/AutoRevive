@@ -195,9 +195,9 @@
 
                 </div>
                 <UButton label="Book Test Drive" icon="material-symbols:calendar-month-outline-sharp"
-                    class=" justify-center py-2 w-full bg-primary-50 hover:bg-primary-50 text-white hover:text-white-100 mt-4 cursor-pointer " />
+                    class="active:bg-primary-50 justify-center py-2 w-full bg-primary-50 hover:bg-primary-50 text-white hover:text-white-100 mt-4 cursor-pointer " />
                 <UButton label="Contact Seller" icon="material-symbols:call"
-                    class=" justify-center py-2 w-full border bg-white border-primary-50  text-primary-50 hover:bg-white mt-4 cursor-pointer " />
+                    class="active:bg-white justify-center py-2 w-full border bg-white border-primary-50  text-primary-50 hover:bg-white mt-4 cursor-pointer " />
                 <p class="text-left text-gray-500 text-sm md:text-base mt-6 leading-relaxed">
                     {{ cars?.[0]?.brand }} {{ cars?.[0]?.model }} in excellent condition. {{ cars?.[0]?.ownership }}
                     vehicle with genuine {{ cars?.[0]?.km_driven }}km driven. Well maintained with regular
