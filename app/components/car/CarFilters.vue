@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-full lg:w-1/5 flex flex-col gap-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md sticky h-fit top-20 py-4 px-4 shadow-xs shrink-0">
+        class="w-full lg:w-1/5 flex flex-col gap-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md sticky h-[calc(100vh-80px)] overflow-y-auto top-20 py-4 px-4 shadow-xs shrink-0">
         <!-- Header -->
         <div class="flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800 pb-3 mb-1">
             <h3 class="font-bold text-lg text-neutral-800 dark:text-neutral-100 flex items-center gap-2">
@@ -164,53 +164,63 @@
         </div>
 
         <!-- REGISTRATION YEAR -->
-        <div class="flex flex-col gap-2">
-            <span class="text-sm font-semibold text-black mb-1">
-                Registration Year
-            </span>
+        <UAccordion :items="[
+            {
+                label: 'Registration Year',
+                slot: 'year'
+            }
+        ]">
+            <template #year>
+                <USlider :model-value="registrationYear" @update:model-value="$emit('update:registrationYear', $event)"
+                    :min="minYear" :max="maxYear" :step="1" color="neutral" :ui="{ root: 'px-5 py-4' }" />
 
-            <USlider :model-value="registrationYear" @update:model-value="$emit('update:registrationYear', $event)"
-                :min="2005" :max="2026" :step="1" color="neutral" />
-
-            <p>{{ registrationYear }}</p>
-        </div>
+                <p v-if="registrationYear?.length === 2">
+                    {{ registrationYear[0] }} - {{ registrationYear[1] }}
+                </p>
+            </template>
+        </UAccordion>
 
         <!-- KM DRIVEN -->
-        <div class="flex flex-col gap-2">
-            <span class="text-sm font-semibold text-black mb-1">
-                KM Driven
-            </span>
+        <UAccordion :items="[
+            {
+                label: 'KM Driven',
+                slot: 'km'
+            }
+        ]">
+            <template #km>
+                <USlider :model-value="kmDriven" @update:model-value="$emit('update:kmDriven', $event)" :min="minKm"
+                    :max="maxKm" :step="1000" color="neutral" :ui="{ root: 'px-5 py-4' }" />
 
-            <USlider :model-value="kmDriven" @update:model-value="$emit('update:kmDriven', $event)" :min="0"
-                :max="100000" :step="1000" color="neutral" />
-
-            <p>{{ kmDriven }}</p>
-        </div>
+                <p v-if="kmDriven?.length === 2">
+                    {{ kmDriven[0]?.toLocaleString() }} km - {{ kmDriven[1]?.toLocaleString() }} km
+                </p>
+            </template>
+        </UAccordion>
     </div>
 </template>
 
 <script setup>
-// what data parent sends to child
+// what this file is expecting from parent
 defineProps({
     priceRange: Array,
     minPrice: Number,
     maxPrice: Number,
-
-    registrationYear: Number,
-    kmDriven: Number,
-
+    registrationYear: Array,
+    minYear: Number,
+    maxYear: Number,
+    kmDriven: Array,
+    minKm: Number,
+    maxKm: Number,
     brandValue: Array,
     fuelValue: Array,
     transmissionValue: Array,
     bodyValue: Array,
     ownerValue: Array,
-
     brands: Array,
     fuelTypes: Array,
     transmissions: Array,
     bodyTypes: Array,
     ownerships: Array,
-
     isbrandsloading: Boolean,
     isfueltypesloading: Boolean,
     istransmissionloading: Boolean,
@@ -218,20 +228,10 @@ defineProps({
     isownershiploading: Boolean
 })
 
-
-
-// what events child can send to parent
+// what child is sending to parent
 defineEmits([
-    'update:priceRange',
-    'update:registrationYear',
-    'update:kmDriven',
+    "update:*",
+    "resetFilters"
 
-    'update:brandValue',
-    'update:fuelValue',
-    'update:transmissionValue',
-    'update:bodyValue',
-    'update:ownerValue',
-
-    'resetFilters'
 ])
 </script>

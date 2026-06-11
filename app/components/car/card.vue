@@ -15,7 +15,7 @@
 
                 </div>
                 <div class="text-md">
-                    ₹{{ car.price_range }}
+                    ₹{{ car.original_price }}
 
                 </div>
             </div>
