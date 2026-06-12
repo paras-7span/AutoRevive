@@ -2,10 +2,8 @@ export const useBodyTypes = () => {
     const { getItems } = useDirectusItems()
 
     const bodyTypes = ref([])
-    const isbodytypesloading = ref(false)
 
     const fetchBodyTypes = async () => {
-        isbodytypesloading.value = true
 
         const res = await getItems({
             collection: 'body_types',
@@ -17,8 +15,7 @@ export const useBodyTypes = () => {
             value: item.id
         }))
 
-        isbodytypesloading.value = false
     }
 
-    return { bodyTypes, isbodytypesloading, fetchBodyTypes }
+    return { bodyTypes, fetchBodyTypes }
 }

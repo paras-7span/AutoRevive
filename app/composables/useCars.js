@@ -118,8 +118,7 @@ export const useCarFilters = async (fetchcars) => {
                     km_max: kmDriven.value[1] || '',
                     brand: brandValue.value || '',
                     fuel_type: fuelValue.value || '',
-                    transmission:
-                        transmissionValue.value || '',
+                    transmission: transmissionValue.value || '',
                     body_type: bodyValue.value || '',
                     owner: ownerValue.value || '',
                     sort_by: sortBy.value || ''
@@ -140,10 +139,7 @@ export const useCarFilters = async (fetchcars) => {
     )
 
     const resetFilters = () => {
-        priceRange.value = [
-            minPrice.value,
-            maxPrice.value
-        ]
+        priceRange.value = [minPrice.value, maxPrice.value]
         registrationYear.value = [minYear.value, maxYear.value]
         kmDriven.value = [minKm.value, maxKm.value]
         brandValue.value = []
