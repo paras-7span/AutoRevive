@@ -20,7 +20,7 @@
             </div>
         </template>
         <NuxtImg src="/hero2.png" alt="App screenshot"
-            class="h-64 sm:h-96 lg:h-[calc(100vh-70px)] w-full object-contain" />
+            class="h-100 sm:h-96 lg:h-[calc(100vh-70px)] w-full object-contain" />
     </UPageHero>
 
 </template>
