@@ -5,7 +5,7 @@
 
 <template>
     <UPageHero :ui="{
-        container: 'bg-gray-50 flex flex-col py-0 sm:py-0 lg:py-0 gap-10 sm:gap-y-0 text-center lg:text-left items-center '
+        container: ' flex flex-col py-0 sm:py-0 lg:py-0 gap-10 sm:gap-y-0 text-center lg:text-left items-center '
 
     }" description="Browse thousands of verified used cars with detailed
         inspection reports. Expert-vetted, transparent pricing, and delivered to your doorstep."
