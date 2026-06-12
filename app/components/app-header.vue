@@ -51,7 +51,7 @@ const debouncegetcars = useDebounceFn(() => {
             <UInput :ui="{ base: 'ring-gray-400 focus-visible:ring-gray-500' }" placeholder="Search..."
                 v-model="searchquery" @input="debouncegetcars" leading-icon="i-heroicons-magnifying-glass"
                 class="hidden md:block " />
-            <UColorModeButton />
+            <!-- <UColorModeButton /> -->
 
 
         </template>
