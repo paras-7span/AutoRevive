@@ -19,8 +19,7 @@
                     to="/cars" class="text-lg bg-primary-50 hover:bg-primary-50 active:bg-primary-50" />
             </div>
         </template>
-        <NuxtImg src="/hero2.png" alt="App screenshot"
-            class="h-64 sm:h-96 lg:h-[calc(100vh-70px)] w-full object-contain" />
+        <NuxtImg src="/hero2.png" alt="Creta" class="h-100 sm:h-96 lg:h-[calc(100vh-70px)] w-full object-contain" />
     </UPageHero>
 
 </template>
