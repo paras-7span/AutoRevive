@@ -1,7 +1,7 @@
 <template>
     <UContainer class="my-3">
         <UButton to="/cars" label="Back to Cars" icon="i-solar:arrow-left-line-duotone" variant="ghost"
-            class=" text-primary-50 hover:bg-gray-200" />
+            class=" text-black hover:bg-white hover:text-primary-50" />
         <section class="flex  md:flex-row flex-col-reverse gap-6">
             <section class="w-full lg:w-3/5 flex flex-col ">
 
@@ -52,11 +52,12 @@
                                 <span class="font-semibold text-gray-900">Model</span>
                                 <span class="font-semibold text-gray-500">{{ cars?.[0]?.model }}</span>
                             </div>
-                            <div class="flex justify-between border-b border-gray-100 pb-3">
-                                <span class="font-semibold text-gray-900">Discounted Price</span>
-                                <span class="font-semibold text-gray-500">{{ cars?.[0]?.discounted_price }}</span>
-                            </div>
 
+                            <div class="flex justify-between border-b border-gray-100 pb-3">
+                                <span class="font-semibold text-gray-900">Fuel Type</span>
+                                <span class="font-semibold text-gray-500">{{ cars?.[0]?.fuel_type }}</span>
+
+                            </div>
 
                             <div class="flex justify-between border-b border-gray-100 pb-3">
                                 <span class="font-semibold text-gray-900">Year</span>
@@ -75,10 +76,10 @@
                         <!-- Right Column -->
                         <div class="space-y-3">
                             <div class="flex justify-between border-b border-gray-100 pb-3">
-                                <span class="font-semibold text-gray-900">Fuel Type</span>
-                                <span class="font-semibold text-gray-500">{{ cars?.[0]?.fuel_type }}</span>
-
+                                <span class="font-semibold text-gray-900">Discounted Price</span>
+                                <span class="font-semibold text-gray-500">{{ cars?.[0]?.discounted_price }}</span>
                             </div>
+
                             <div class="flex justify-between border-b border-gray-100 pb-3">
                                 <span class="font-semibold text-gray-900">Milage</span>
                                 <span class="font-semibold text-gray-500">{{ cars?.[0]?.milage }} km</span>
@@ -104,17 +105,8 @@
                                 <span class="font-semibold text-gray-900">Ownership</span>
                                 <span class="font-semibold text-gray-500">{{ cars?.[0]?.ownership }}</span>
                             </div>
-
-
-
-
-
                         </div>
-
                     </div>
-
-
-
                 </div>
 
                 <!-- why -->
@@ -169,7 +161,7 @@
                         {{ cars?.[0]?.model }}
                         {{ cars?.[0]?.variant }}
                     </h1>
-                    <p class="text-3xl text-black font-bold">₹ {{ cars?.[0].discounted_price }}</p>
+                    <p class="text-3xl text-black font-bold">₹ {{ cars?.[0].original_price }}</p>
                     <p class="text-md  text-gray-500 ">₹ {{ cars?.[0]?.emi_per_month }} EMI/Month </p>
                 </div>
                 <div class="mt-4 grid grid-cols-3 gap-3">
@@ -215,8 +207,6 @@
 </template>
 
 <script setup>
-
-
 const { getItems } = useDirectusItems()
 
 const route = useRoute()
@@ -308,4 +298,9 @@ function select(index) {
 
     carousel.value?.emblaApi?.scrollTo(index)
 }
+
+useSeoMeta({
+    title: `${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} | AutoRevive`,
+    description: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model}, a premium used car available at AutoRevive. Known for its stunning design, powerful performance, and exceptional reliability, this model stands out in the competitive car market. With advanced features, superior comfort, and a superior driving experience, it's the perfect choice for those seeking quality and style. Explore detailed specifications, check availability, and find the best deals on this fantastic used car at AutoRevive.`
+})
 </script>
