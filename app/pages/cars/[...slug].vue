@@ -1,20 +1,18 @@
 <template>
     <UContainer class="my-3">
-        <section class="flex gap-6">
+        <UButton to="/cars" label="Back to Cars" icon="i-solar:arrow-left-line-duotone" variant="ghost"
+            class=" text-primary-50 hover:bg-gray-200" />
+        <section class="flex  md:flex-row flex-col-reverse gap-6">
             <section class="w-full lg:w-3/5 flex flex-col ">
 
-                <h1 class="text-4xl text-black font-bold mb-1">
-                    {{ cars?.[0]?.brand }}
-                    {{ cars?.[0]?.model }}
-                    {{ cars?.[0]?.variant }}
-                </h1>
+
 
                 <!-- img -->
-                <div class="w-full flex  flex-col lg:flex-row gap-8 mt-4">
+                <div class="w-full flex  flex-col lg:flex-row gap-8 mt-1">
 
                     <div class=" w-full relative">
                         <UCarousel ref="carousel" v-slot="{ item }" :items="items" class="w-full" @select="onSelect">
-                            <img :src="item" class="rounded-lg w-full h-[380px] object-cover" loading="lazy">
+                            <img :src="item" class="rounded-lg w-full h-95 object-cover" loading="lazy">
                         </UCarousel>
                         <div
                             class=" text-[10px] text-yellow-800 bg-yellow-100 absolute top-2 right-2 px-2 py-1 rounded-md">
@@ -122,8 +120,8 @@
                 <!-- why -->
                 <div class="w-full  border border-gray-200 bg-green-50 mt-6 rounded-lg px-4 py-2">
                     <p class="font-semibold mb-2 text-xl text-black">Why Choose AutoRevive?</p>
-                    <div class="flex flex-col md:flex-row  gap-2  items-center justify-between">
-                        <div class=" items-center px-2">
+                    <div class="flex flex-col md:flex-row gap-4 md:gap-2 items-start md:items-center justify-between">
+                        <div class="flex flex-row md:flex-col  items-left px-2">
                             <NuxtImg src="/icons/MaterialSymbolsShieldOutline.svg" alt="Certified" class="h-12 w-12" />
                             <div class="flex flex-col ">
                                 <p class="text-sm  text-black font-bold ">Verified Cars</p>
@@ -132,7 +130,7 @@
                             </div>
 
                         </div>
-                        <div class="items-center px-2">
+                        <div class="flex flex-row md:flex-col items-left px-2">
                             <NuxtImg src="/icons/MaterialSymbolsDocumentScannerOutlineSharp.svg" alt="Certified"
                                 class="h-10 w-10" />
                             <div class="flex flex-col ">
@@ -142,9 +140,9 @@
                             </div>
 
                         </div>
-                        <div class="  items-center ">
+                        <div class="flex flex-row md:flex-col  items-left ">
                             <NuxtImg src="/icons/MaterialSymbolsPersonCheckOutline.svg" alt="Certified"
-                                class="h-10 w-10" />
+                                class="h-12 w-12" />
                             <div class="flex flex-col ">
                                 <p class="text-sm text-black font-bold ">Hassle-free Ownership</p>
                                 <p class="text-sm text-black ">Easy documentation and smooth ownership</p>
@@ -163,9 +161,14 @@
             </section>
 
             <!-- right card -->
-            <section class="w-full h-fit lg:w-2/5 border border-gray-200 sticky top-34  p-4  rounded-lg">
+            <section class="w-full h-fit lg:w-2/5 border border-gray-200 md:sticky top-27  p-4  rounded-lg">
 
                 <div class=" items-end gap-2">
+                    <h1 class="text-4xl text-black font-bold mb-1">
+                        {{ cars?.[0]?.brand }}
+                        {{ cars?.[0]?.model }}
+                        {{ cars?.[0]?.variant }}
+                    </h1>
                     <p class="text-3xl text-black font-bold">₹ {{ cars?.[0].discounted_price }}</p>
                     <p class="text-md  text-gray-500 ">₹ {{ cars?.[0]?.emi_per_month }} EMI/Month </p>
                 </div>

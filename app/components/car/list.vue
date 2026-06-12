@@ -162,7 +162,7 @@ async function loadMoreCars() {
         visibleCount.value >= cars.value.length
     ) return
     loadingMore.value = true
-    await new Promise(resolve => setTimeout(resolve, 700))
+    await new Promise(resolve => setTimeout(resolve, 500))
     visibleCount.value += 6
     loadingMore.value = false
 }
