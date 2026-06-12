@@ -5,7 +5,7 @@
             <h3 class=" text-3xl font-bold text-black">Latest on <span class="text-primary-50">AutoRevive</span></h3>
 
             <UButton trailing-icon="material-symbols:arrow-forward-rounded" to="/cars" label="View All Cars"
-                variant="link" class="text-black hover:text-black hover:bg-gray-200" />
+                variant="link" class="text-black hover:text-primary-50 hover:bg-white" />
         </div>
 
         <UPageGrid :ui="{ base: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4' }">

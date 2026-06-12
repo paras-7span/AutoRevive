@@ -7,7 +7,8 @@
         <div class="flex flex-wrap gap-1 justify-around md:gap-3 py-2">
             <div class="flex items-center justify-center hover:scale-105 duration-300 cursor-pointer transition"
                 v-for="i in images" :key="i">
-                <NuxtImg :src="i" class="h-24 w-24 object-contain ring ring-default rounded-lg shadow-lg p-1" />
+                <NuxtImg :src="i" class="h-24 w-24 object-contain ring ring-default rounded-lg shadow-lg p-1"
+                    alt="Brand Logo" />
             </div>
         </div>
 

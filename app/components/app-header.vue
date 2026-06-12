@@ -34,7 +34,7 @@ const debouncegetcars = useDebounceFn(() => {
     <UHeader>
         <template #title>
             <NuxtLink to="/">
-                <NuxtImg src="/autorevicelogo.png" class="h-8 w-auto" />
+                <NuxtImg src="/autorevicelogo.png" alt="logo" class="h-8 w-auto" />
             </NuxtLink>
         </template>
 
