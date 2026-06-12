@@ -3,10 +3,8 @@ export const useTransmissions = () => {
     const { getItems } = useDirectusItems()
 
     const transmissions = ref([])
-    const istransmissionloading = ref(false)
 
     const fetchTransmissions = async () => {
-        istransmissionloading.value = true
 
         const res = await getItems({
             collection: 'transmissions',
@@ -18,8 +16,7 @@ export const useTransmissions = () => {
             value: item.id
         }))
 
-        istransmissionloading.value = false
     }
 
-    return { transmissions, istransmissionloading, fetchTransmissions }
+    return { transmissions, fetchTransmissions }
 }

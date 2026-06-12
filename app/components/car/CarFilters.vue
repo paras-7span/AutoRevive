@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-full lg:w-1/5 flex flex-col gap-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md sticky h-fit overflow-y-auto top-20 py-4 px-4 shadow-xs shrink-0">
+        class="w-full lg:w-1/5 flex flex-col gap-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md sticky h-[calc(100vh-90px)] overflow-y-auto top-20 py-4 px-4 shadow-xs shrink-0">
         <!-- Header -->
         <div class="flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800 pb-3 mb-1">
             <h3 class="font-bold text-lg text-neutral-800 dark:text-neutral-100 flex items-center gap-2">
@@ -221,11 +221,7 @@ defineProps({
     transmissions: Array,
     bodyTypes: Array,
     ownerships: Array,
-    isbrandsloading: Boolean,
-    isfueltypesloading: Boolean,
-    istransmissionloading: Boolean,
-    isbodytypesloading: Boolean,
-    isownershiploading: Boolean
+
 })
 
 // what child is sending to parent
