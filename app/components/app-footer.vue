@@ -1,40 +1,27 @@
-<script setup lang="ts">
-import type { NavigationMenuItem } from '@nuxt/ui'
+<script setup>
 
-const items: NavigationMenuItem[] = [
-    {
-        label: 'Figma Kit',
-        to: 'https://go.nuxt.com/figma-ui',
-        target: '_blank'
-    },
-    {
-        label: 'Playground',
-        to: 'https://stackblitz.com/edit/nuxt-ui',
-        target: '_blank'
-    },
-    {
-        label: 'Releases',
-        to: 'https://github.com/nuxt/ui/releases',
-        target: '_blank'
-    }
-]
+
 </script>
 
 <template>
     <UFooter class="border-t border-neutral-200 dark:border-neutral-700">
         <template #left>
-            <p class="text-muted text-sm">Copyright © {{ new Date().getFullYear() }}</p>
+            <div class="flex flex-col ">
+                <NuxtImg src="/autorevicelogo.png" alt="Logo" class="h-7 " />
+                <p class="text-muted text-sm">Copyright © {{ new Date().getFullYear() }} AutoRevive</p>
+            </div>
         </template>
 
-        <UNavigationMenu :items="items" variant="link" />
 
+        <template #default>
+            <p>Your trusted platform for buying quality used cars.</p>
+        </template>
         <template #right>
-            <UButton icon="i-simple-icons-discord" color="neutral" variant="ghost" to="https://go.nuxt.com/discord"
-                target="_blank" aria-label="Discord" />
-            <UButton icon="i-simple-icons-x" color="neutral" variant="ghost" to="https://go.nuxt.com/x" target="_blank"
-                aria-label="X" />
-            <UButton icon="i-simple-icons-github" color="neutral" variant="ghost" to="https://github.com/nuxt/nuxt"
-                target="_blank" aria-label="GitHub" />
+
+            <UButton icon="material-symbols:perm-phone-msg-outline-rounded" color="neutral" variant="ghost"
+                to="https://go.nuxt.com/x" target="_blank" aria-label="X" />
+            <UButton icon="material-symbols:mail-outline-rounded" color="neutral" variant="ghost"
+                to="mailto:[EMAIL_ADDRESS]" target="_blank" aria-label="Gmail" />
         </template>
     </UFooter>
 </template>
