@@ -232,6 +232,7 @@ const { data: cars, error } = await useAsyncData(
                     'variant',
                     'milage',
                     'km_driven',
+                    'cover_image',
                     'discounted_price',
                     'original_price',
                     'emi_per_month',
@@ -254,6 +255,7 @@ const { data: cars, error } = await useAsyncData(
             return res.map((item) => ({
                 id: item.id,
                 brand: item?.brand?.name || '',
+                cover_image: item?.cover_image || '',
                 model: item?.model || '',
                 variant: item?.variant || '',
                 milage: item?.milage || '',
@@ -310,16 +312,16 @@ function select(index) {
 useSeoMeta({
     title: `${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} | AutoRevive`,
     description: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model}, a premium used car available at AutoRevive. Known for its stunning design, powerful performance, and exceptional reliability, this model stands out in the competitive car market. With advanced features, superior comfort, and a superior driving experience, it's the perfect choice for those seeking quality and style. Explore detailed specifications, check availability, and find the best deals on this fantastic used car at AutoRevive.`,
-    ogTitle: `${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} is now on D2C Guru 🚀`,
-    ogDescription: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on D2C Guru`,
+    ogTitle: `${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} is now on AutoRevive 🚀`,
+    ogDescription: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on AutoRevive`,
 
     ogImage: getAssetsUrl(cars.value?.[0]?.gallery_images?.[0]),
     ogUrl: `https://auto-revive.vercel.app`,
     ogType: 'website',
 
     twitterCard: 'summary_large_image',
-    twitterTitle: `${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on D2C Guru 🚀`,
-    twitterDescription: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on D2C Guru`,
+    twitterTitle: `${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on AutoRevive 🚀`,
+    twitterDescription: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on AutoRevive`,
     twitterImage: getAssetsUrl(cars.value?.[0]?.cover_image?.[0])
 })
 
