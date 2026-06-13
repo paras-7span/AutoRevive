@@ -332,7 +332,7 @@ async function fetchcars() {
                 })
                 : res
         cars.value = filtered.map(item => ({
-            id: `/cars/${item?.id}`,
+            id: item?.id,
             brand: item?.brand?.name || '',
             model: item?.model || '',
             variant: item?.variant || '',

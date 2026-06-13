@@ -45,7 +45,7 @@
             </div>
         </template>
         <template #footer>
-            <UButton :to="car.id" label="View Details"
+            <UButton :to="`/cars/${car.id}`" label="View Details"
                 class=" justify-center  w-full active:bg-gray-900 bg-gray-900 text-white hover:bg-gray-950 " />
         </template>
         <div class=" text-[10px] text-yellow-800 bg-yellow-100 absolute top-2 right-2 px-2 py-1 rounded-md">
