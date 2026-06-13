@@ -1,7 +1,7 @@
 <template>
     <UContainer class="my-4 ">
         <div class="flex flex-col mb-3 items-center justify-center">
-            <h2 class=" text-3xl font-bold text-black">Popular Brands</h2>
+            <h2 class=" text-2xl md:text-3xl font-bold text-black">Popular Brands</h2>
             <p class="text-gray-400">Choose from most reliable brands.</p>
         </div>
         <div class="flex flex-wrap gap-1 justify-around md:gap-3 py-2">

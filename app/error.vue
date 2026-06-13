@@ -10,7 +10,7 @@ function handleGoHome() {
 }
 
 useSeoMeta({
-    title: 'AutoRevive - 404',
+    title: 'AutoRevive | 404',
     description: 'Error - AutoRevive',
     favicon: '/images/favicon.png'
 })
