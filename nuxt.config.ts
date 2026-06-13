@@ -21,7 +21,10 @@ export default defineNuxtConfig({
     '/': { prerender: true }
   },
 
-
+  colorMode: {
+    preference: 'light',
+    fallback: 'light',
+  },
   compatibilityDate: '2025-01-15'
 
 })

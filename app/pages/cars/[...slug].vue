@@ -146,9 +146,17 @@
                     </div>
 
                 </div>
-                <!-- similar cars -->
-                <div class="flex flex-col lg:flex-row  gap-2  items-center justify-between">
-                    <!-- TODO -->
+                <!-- Share cars -->
+                <div
+                    class="flex mt-6 border border-primary-50 rounded-lg flex-col lg:flex-row  gap-2 px-4 py-2 items-center justify-between">
+                    <div class="flex flex-col">
+                        <p class="text-lg text-black font-bold">Liked this car? </p>
+                        <p class="text-sm text-gray-500">Share this car with your friends and family</p>
+                    </div>
+                    <UButton label="Share this car" icon="material-symbols:share-outline"
+                        class="bg-primary-50 cursor-pointer active:bg-primary-50 hover:bg-primary-50"
+                        @click="shareCar" />
+
                 </div>
             </section>
 
@@ -301,6 +309,22 @@ function select(index) {
 
 useSeoMeta({
     title: `${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} | AutoRevive`,
-    description: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model}, a premium used car available at AutoRevive. Known for its stunning design, powerful performance, and exceptional reliability, this model stands out in the competitive car market. With advanced features, superior comfort, and a superior driving experience, it's the perfect choice for those seeking quality and style. Explore detailed specifications, check availability, and find the best deals on this fantastic used car at AutoRevive.`
+    description: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model}, a premium used car available at AutoRevive. Known for its stunning design, powerful performance, and exceptional reliability, this model stands out in the competitive car market. With advanced features, superior comfort, and a superior driving experience, it's the perfect choice for those seeking quality and style. Explore detailed specifications, check availability, and find the best deals on this fantastic used car at AutoRevive.`,
+    ogTitle: `${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} is now on D2C Guru 🚀`,
+    ogDescription: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on D2C Guru`,
+
+    ogImage: getAssetsUrl(cars.value?.[0]?.gallery_images?.[0]),
+    ogUrl: `https://auto-revive.vercel.app`,
+    ogType: 'website',
+
+    twitterCard: 'summary_large_image',
+    twitterTitle: `${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on D2C Guru 🚀`,
+    twitterDescription: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on D2C Guru`,
+    twitterImage: getAssetsUrl(cars.value?.[0]?.cover_image?.[0])
 })
+
+const shareCar = () => {
+    navigator.clipboard.writeText(window.location.href)
+    alert('Link Copied!!')
+}
 </script>
