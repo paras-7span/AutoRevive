@@ -5,12 +5,13 @@ const props = defineProps({
 
 const router = useRouter()
 
+
 function handleGoHome() {
     clearError({ redirect: '/' })
 }
 
 useSeoMeta({
-    title: 'AutoRevive | 404',
+    title: 'AutoRevive - 404',
     description: 'Error - AutoRevive',
     favicon: '/images/favicon.png'
 })
