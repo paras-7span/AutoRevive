@@ -19,9 +19,9 @@
         <template #right>
 
             <UButton icon="material-symbols:perm-phone-msg-outline-rounded" color="neutral" variant="ghost"
-                to="https://go.nuxt.com/x" target="_blank" aria-label="X" />
+                href="tel:+919712628618" aria-label="Phone" />
             <UButton icon="material-symbols:mail-outline-rounded" color="neutral" variant="ghost"
-                to="mailto:[EMAIL_ADDRESS]" target="_blank" aria-label="Gmail" />
+                href="mailto:paras@7span.com" aria-label="Email" />
         </template>
     </UFooter>
 </template>

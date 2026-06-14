@@ -3,6 +3,7 @@
     <HomeHero />
     <HomePopularbrands />
     <HomeLatestcars />
+    <HomeHomecta />
   </div>
 </template>
 <script setup>
