@@ -4,9 +4,9 @@
             <h2 class=" text-2xl md:text-3xl font-bold text-black">Popular Brands</h2>
             <p class="text-gray-400">Choose from most reliable brands.</p>
         </div>
-        <div class="flex flex-wrap gap-1 justify-around md:gap-3 py-2">
-            <div class="flex items-center justify-center hover:scale-105 duration-300 cursor-pointer transition"
-                v-for="i in images" :key="i">
+        <div class="flex flex-wrap  justify-evenly gap-y-4 py-2">
+            <div class="flex items-center justify-center hover:scale-105 duration-400  transition" v-for="i in images"
+                :key="i">
                 <NuxtImg :src="i" class="h-24 w-24 object-contain ring ring-default rounded-lg shadow-lg p-1"
                     alt="Brand Logo" />
             </div>
