@@ -313,14 +313,14 @@ useSeoMeta({
     ogTitle: `${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} is now on AutoRevive 🚀`,
     ogDescription: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on AutoRevive`,
 
-    ogImage: getAssetsUrl(cars.value?.[0]?.gallery_images?.[0]),
+    ogImage: getAssetsUrl(cars.value?.[0]?.cover_image || cars.value?.[0]?.gallery_images?.[0]),
     ogUrl: `https://auto-revive.vercel.app`,
     ogType: 'website',
 
     twitterCard: 'summary_large_image',
     twitterTitle: `${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on AutoRevive 🚀`,
     twitterDescription: `Discover the ${cars.value?.[0]?.brand} ${cars.value?.[0]?.model} on AutoRevive`,
-    twitterImage: getAssetsUrl(cars.value?.[0]?.cover_image?.[0])
+    twitterImage: getAssetsUrl(cars.value?.[0]?.cover_image || cars.value?.[0]?.gallery_images?.[0])
 })
 
 const linkcopied = ref(false)

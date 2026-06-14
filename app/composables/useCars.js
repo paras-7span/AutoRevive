@@ -69,6 +69,8 @@ export const useCarFilters = async (fetchcars) => {
         }
     }
 
+    let isResetting = false
+
     watch(
         [
             priceRange,
@@ -82,6 +84,7 @@ export const useCarFilters = async (fetchcars) => {
             sortBy
         ],
         () => {
+            if (isResetting) return
             router.push({
                 query: {
                     q: route.query.q || '',
@@ -114,6 +117,7 @@ export const useCarFilters = async (fetchcars) => {
     )
 
     const resetFilters = () => {
+        isResetting = true
         priceRange.value = [minPrice.value, maxPrice.value]
         registrationYear.value = [minYear.value, maxYear.value]
         kmDriven.value = [minKm.value, maxKm.value]
@@ -130,6 +134,10 @@ export const useCarFilters = async (fetchcars) => {
         })
 
         fetchcars()
+
+        nextTick(() => {
+            isResetting = false
+        })
     }
     // initialize dropdown data
     const initFilters = async () => {
