@@ -49,7 +49,8 @@ async function fetchLatestCars() {
                     'km_driven',
                     'original_price',
                     'cover_image',
-
+                    'discounted_price',
+                    'emi_per_month',
                     'fuel_type.name',
                     'transmission.name',
                     'additional_badge',
