@@ -292,6 +292,7 @@ const { data: cars, error } = await useAsyncData(
         return data
     }
 )
+console.log("cars detail :", cars.value)
 
 const items = computed(() => {
     return cars.value?.[0]?.gallery_images.map((id) => getAssetsUrl(id)) ?? []
