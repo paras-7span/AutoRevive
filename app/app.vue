@@ -2,6 +2,12 @@
 useHead({
   meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
   link: [{ rel: 'icon', href: '/autorevivefavicon.png' }],
+  link: [
+    {
+      rel: 'manifest',
+      href: '/manifest.webmanifest',
+    }
+  ],
   htmlAttrs: {
     lang: 'en'
   }
