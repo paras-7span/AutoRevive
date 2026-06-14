@@ -284,8 +284,8 @@ async function fetchcars() {
 
                 sort: (() => {
                     const map = {
-                        price_low_to_high: ['original_price'],
-                        price_high_to_low: ['-original_price'],
+                        price_low_to_high: ['discounted_price'],
+                        price_high_to_low: ['-discounted_price'],
                         newest_first: ['-registration_year'],
                         oldest_first: ['registration_year'],
                         km_low_to_high: ['km_driven']
