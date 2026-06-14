@@ -1,5 +1,4 @@
-import { ref, watch } from 'vue'
-
+// all logic for filter cars
 export const useCarFilters = async (fetchcars) => {
     const router = useRouter()
     const route = useRoute()
@@ -7,7 +6,6 @@ export const useCarFilters = async (fetchcars) => {
     const priceRange = ref([])
     const registrationYear = ref([])
     const kmDriven = ref([])
-
     const brandValue = ref([])
     const fuelValue = ref([])
     const transmissionValue = ref([])
@@ -17,35 +15,12 @@ export const useCarFilters = async (fetchcars) => {
 
     const searchquery = ref(route.query.q || '')
 
-    const {
-        brands,
-        isbrandsloading,
-        fetchBrands
-    } = useBrands()
-
-    const {
-        fuelTypes,
-        isfueltypesloading,
-        fetchFuelTypes
-    } = useFuelTypes()
-
-    const {
-        transmissions,
-        istransmissionloading,
-        fetchTransmissions
-    } = useTransmissions()
-
-    const {
-        bodyTypes,
-        isbodytypesloading,
-        fetchBodyTypes
-    } = useBodyTypes()
-
-    const {
-        ownerships,
-        isownershiploading,
-        fetchOwnerships
-    } = useOwnerships()
+    // destructure 
+    const { brands, fetchBrands } = useBrands()
+    const { fuelTypes, fetchFuelTypes } = useFuelTypes()
+    const { transmissions, fetchTransmissions } = useTransmissions()
+    const { bodyTypes, fetchBodyTypes } = useBodyTypes()
+    const { ownerships, fetchOwnerships } = useOwnerships()
 
     const minPrice = ref(0)
     const maxPrice = ref(0)
@@ -156,7 +131,7 @@ export const useCarFilters = async (fetchcars) => {
 
         fetchcars()
     }
-
+    // initialize dropdown data
     const initFilters = async () => {
         await fetchBrands()
         await fetchFuelTypes()
@@ -169,36 +144,24 @@ export const useCarFilters = async (fetchcars) => {
         priceRange,
         registrationYear,
         kmDriven,
-
         brandValue,
         fuelValue,
         transmissionValue,
         bodyValue,
         ownerValue,
-
         sortBy,
-
         searchquery,
-
         minPrice,
         maxPrice,
         minKm,
         maxKm,
         minYear,
         maxYear,
-
         brands,
         fuelTypes,
         transmissions,
         bodyTypes,
         ownerships,
-
-
-        isbrandsloading,
-        isfueltypesloading,
-        istransmissionloading,
-        isbodytypesloading,
-        isownershiploading,
 
         resetFilters,
         initFilters

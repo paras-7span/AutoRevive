@@ -1,7 +1,7 @@
 <template>
     <UContainer class="flex flex-col lg:flex-row gap-6 mx-auto">
 
-        <!-- FILTER COMPONENT -->
+        <!-- filter bar -->
         <CarFilters v-model:priceRange="priceRange" v-model:registrationYear="registrationYear"
             v-model:kmDriven="kmDriven" v-model:brandValue="brandValue" v-model:fuelValue="fuelValue"
             v-model:transmissionValue="transmissionValue" v-model:bodyValue="bodyValue" v-model:ownerValue="ownerValue"
@@ -9,7 +9,7 @@
             :maxYear="maxYear" :brands="brands" :fuelTypes="fuelTypes" :transmissions="transmissions"
             :bodyTypes="bodyTypes" :ownerships="ownerships" @resetFilters="resetFilters" />
 
-        <!-- RIGHT SIDE -->
+        <!-- right side -->
         <div class="w-full">
 
             <!-- SORT -->
@@ -23,7 +23,7 @@
                 </UDropdownMenu>
             </div>
 
-            <!-- INITIAL PAGE LOADING -->
+            <!-- skeleton -->
             <div v-if="isloading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div v-for="i in 6" :key="i">
                     <div class="w-full flex flex-col gap-2">
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <!-- CAR GRID -->
+            <!-- car card grid -->
             <div v-else-if="cars.length">
 
                 <UPageGrid :ui="{
@@ -53,7 +53,6 @@
 
                     <!-- load more skeleton -->
                     <template v-if="loadingMore">
-
                         <div v-for="i in 6" :key="`load-${i}`">
                             <div class="w-full flex flex-col gap-2">
                                 <USkeleton class="h-50 w-full rounded-xl" />
@@ -63,17 +62,13 @@
                                     <USkeleton class="h-10 w-1/3" />
                                     <USkeleton class="h-10 w-1/3" />
                                 </div>
-
                                 <USkeleton class="h-10 w-full" />
-
                             </div>
                         </div>
-
                     </template>
-
                 </UPageGrid>
 
-                <!-- OBSERVER TRIGGER -->
+                <!-- observer trigger -->
                 <div ref="loadTrigger" class="h-20 flex items-center justify-center">
                     <p v-if="visibleCount >= cars.length" class="text-sm text-gray-400">
                         No more cars available
@@ -82,7 +77,7 @@
 
             </div>
 
-            <!-- EMPTY -->
+            <!-- if no more cars available -->
             <div v-else class="flex items-center justify-center flex-col gap-2">
                 <NuxtImg src="/nocarfound.png" class="h-96 w-auto mx-auto" />
                 <p class="text-center text-lg font-bold">
@@ -97,64 +92,53 @@
 
 const { getItems } = useDirectusItems()
 
-const sortOptions = [
-    [
-        {
-            label: 'Price: Low to High',
-            value: 'price_low_to_high',
-            onSelect: () => {
-                sortBy.value = 'price_low_to_high'
-            }
-        },
+const sortOptions = [[{ label: 'Price: Low to High', value: 'price_low_to_high', onSelect: () => { sortBy.value = 'price_low_to_high' } },
+{
+    label: 'Price: High to Low', value: 'price_high_to_low', onSelect: () => {
+        sortBy.value = 'price_high_to_low'
+    }
+},
 
-        {
-            label: 'Price: High to Low',
-            value: 'price_high_to_low',
-            onSelect: () => {
-                sortBy.value = 'price_high_to_low'
-            }
-        },
+{
+    label: 'Newest First',
+    value: 'newest_first',
+    onSelect: () => {
+        sortBy.value = 'newest_first'
+    }
+},
 
-        {
-            label: 'Newest First',
-            value: 'newest_first',
-            onSelect: () => {
-                sortBy.value = 'newest_first'
-            }
-        },
+{
+    label: 'Oldest First',
+    value: 'oldest_first',
+    onSelect: () => {
+        sortBy.value = 'oldest_first'
+    }
+},
 
-        {
-            label: 'Oldest First',
-            value: 'oldest_first',
-            onSelect: () => {
-                sortBy.value = 'oldest_first'
-            }
-        },
-
-        {
-            label: 'KM: Low to High',
-            value: 'km_low_to_high',
-            onSelect: () => {
-                sortBy.value = 'km_low_to_high'
-            }
-        }
-    ]
+{
+    label: 'KM: Low to High',
+    value: 'km_low_to_high',
+    onSelect: () => {
+        sortBy.value = 'km_low_to_high'
+    }
+}
+]
 ]
 const cars = ref([])
 const error = ref(null)
 const isloading = ref(true)
-// INFINITE SCROLL
+// infinite scroll
 const visibleCount = ref(6)
 const loadingMore = ref(false)
 const loadTrigger = ref(null)
 let observer = null
 
-// VISIBLE CARS
+// visible cars
 const visibleCars = computed(() => {
     return cars.value.slice(0, visibleCount.value)
 })
 
-// LOAD MORE
+// load more
 async function loadMoreCars() {
 
     if (
@@ -360,6 +344,9 @@ async function fetchcars() {
         isloading.value = false
     }
 }
+
+
+// destruct
 const {
     priceRange,
     registrationYear,

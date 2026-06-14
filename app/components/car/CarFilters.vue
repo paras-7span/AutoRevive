@@ -1,7 +1,7 @@
 <template>
     <div
         class="w-full lg:w-1/5 flex flex-col gap-3 border border-neutral-200 dark:border-neutral-800 rounded-xl bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md sticky md:h-[calc(100vh-6rem)] md:overflow-y-auto top-20 py-4 px-4 shadow-xs shrink-0">
-        <!-- Header -->
+        <!-- header -->
         <div class="flex justify-between items-center border-b border-neutral-100 dark:border-neutral-800 pb-3 mb-1">
             <h3 class="font-bold text-lg text-neutral-800 dark:text-neutral-100 flex items-center gap-2">
                 <UIcon name="i-heroicons-funnel" class="w-5 h-5 text-neutral-500" />
@@ -11,7 +11,7 @@
             <UButton label="Clear All" variant="ghost" color="neutral" size="xs" @click="$emit('resetFilters')" />
         </div>
 
-        <!-- PRICE RANGE -->
+        <!-- price range -->
         <UAccordion :items="[
             {
                 label: 'Price Range',
@@ -31,7 +31,7 @@
         </UAccordion>
 
 
-        <!-- BRANDS -->
+        <!-- brands skeleton -->
         <div v-if="isbrandsloading" class="flex items-center justify-center">
             <div class="w-full flex flex-wrap gap-2">
                 <div class="flex items-center gap-2">
@@ -58,7 +58,7 @@
             </UAccordion>
         </div>
 
-        <!-- FUEL -->
+        <!-- fuel type skeleton -->
         <div v-if="isfueltypesloading" class="flex items-center justify-center">
             <div class="w-full flex flex-wrap gap-2">
                 <div class="flex items-center gap-2">
@@ -84,7 +84,7 @@
             </UAccordion>
         </div>
 
-        <!-- TRANSMISSION -->
+        <!-- transmission skeleton -->
         <div v-if="istransmissionloading" class="flex items-center justify-center">
             <div class="w-full flex flex-wrap gap-2">
                 <div class="flex items-center gap-2">
@@ -111,7 +111,7 @@
             </UAccordion>
         </div>
 
-        <!-- BODY TYPE -->
+        <!-- body type skeleton -->
         <div v-if="isbodytypesloading" class="flex items-center justify-center">
             <div class="w-full flex flex-wrap gap-2">
                 <div class="flex items-center gap-2">
@@ -137,7 +137,7 @@
             </UAccordion>
         </div>
 
-        <!-- OWNER -->
+        <!-- ownership skeleton -->
         <div v-if="isownershiploading" class="flex items-center justify-center">
             <div class="w-full flex flex-wrap gap-2">
                 <div class="flex items-center gap-2">
@@ -163,7 +163,7 @@
             </UAccordion>
         </div>
 
-        <!-- REGISTRATION YEAR -->
+        <!-- registration year skeleton -->
         <UAccordion :items="[
             {
                 label: 'Registration Year',
@@ -180,7 +180,7 @@
             </template>
         </UAccordion>
 
-        <!-- KM DRIVEN -->
+        <!-- km driven skeleton -->
         <UAccordion :items="[
             {
                 label: 'KM Driven',
