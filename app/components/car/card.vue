@@ -47,7 +47,7 @@
             <div class="flex items-center justify-between gap-2">
                 <UButton :to="`/cars/${car.id}`" label="View Details"
                     class=" justify-center  w-full active:bg-gray-900 bg-gray-900 text-white hover:bg-gray-950 " />
-                <UButton :to="`/compare`" label="Compare Cars"
+                <UButton :to="`cars/compare`" label="Compare Cars"
                     class=" justify-center  w-full active:bg-gray-900 bg-gray-900 text-white hover:bg-gray-950 " />
             </div>
 
