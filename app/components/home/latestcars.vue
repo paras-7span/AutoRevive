@@ -1,5 +1,5 @@
 <template>
-    <UContainer class="mb-6 mt-8">
+    <UContainer class="my-4">
         <div class="mb-3 flex justify-between">
 
             <h3 class="text-2xl md:text-3xl font-bold text-black">Latest on <span

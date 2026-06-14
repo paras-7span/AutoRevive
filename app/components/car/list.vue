@@ -342,6 +342,9 @@ async function fetchcars() {
         error.value = e
     } finally {
         isloading.value = false
+
+        await nextTick()
+        reconnectObserver()
     }
 }
 
@@ -375,16 +378,16 @@ const {
 
 } = await useCarFilters(fetchcars)
 
-onMounted(async () => {
-    await fetchcars()
-    await initFilters()
+function reconnectObserver() {
+    if (observer) {
+        observer.disconnect()
+    }
 
     observer = new IntersectionObserver(
         ([entry]) => {
             if (entry.isIntersecting) {
                 loadMoreCars()
             }
-
         },
         {
             threshold: 0.2
@@ -394,6 +397,13 @@ onMounted(async () => {
     if (loadTrigger.value) {
         observer.observe(loadTrigger.value)
     }
+}
+
+onMounted(async () => {
+    await fetchcars()
+    await initFilters()
+
+    reconnectObserver()
 
 })
 
