@@ -1,34 +1,35 @@
 # AutoRevive 🚗
-Modern car marketplace platform built with **Nuxt 3**, **Vue 3**, **Directus CMS**, and **TailwindCSS** featuring advanced filtering, infinite scroll pagination, dynamic car pages, and responsive UI design.
----
+
+## Modern car marketplace platform built with **Nuxt 3**, **Vue 3**, **Directus CMS**, and **TailwindCSS** featuring advanced filtering, infinite scroll pagination, dynamic car pages, and responsive UI design.
 
 # Features
-* 🚗 Modern car listing platform
-* 🔍 Advanced filtering system
-* ♾️ Infinite scroll pagination
-* ⚡ Fast and optimized UI
-* 📱 Fully responsive design
-* 🖼️ Dynamic car detail pages
-* 🏷️ Smart sorting options
-* 🔎 Real-time search functionality
-* 🧩 Reusable Vue components
-* 🌐 Directus CMS integration
-* 💀 Skeleton loading states
-* 🎨 Modern UI/UX experience
+
+- 🚗 Modern car listing platform
+- 🔍 Advanced filtering system
+- ♾️ Infinite scroll pagination
+- ⚡ Fast and optimized UI
+- 📱 Fully responsive design
+- 🖼️ Dynamic car detail pages
+- 🏷️ Smart sorting options
+- 🔎 Real-time search functionality
+- 🧩 Reusable Vue components
+- 🌐 Directus CMS integration
+- 💀 Skeleton loading states
+- 🎨 Modern UI/UX experience
 
 ---
 
 # Tech Stack
 
-| Feature            | Technology       |
-| ------------------ | ---------------- |
-| Frontend Framework | Nuxt 3 / Vue 3   |
-| Styling            | TailwindCSS      |
-| UI Components      | Nuxt UI          |
-| Backend / CMS      | Directus CMS     |
-| State Management   | Vue Composables  |
-| Image Optimization | Nuxt Image       |
-| Deployment         | Vercel           |
+| Feature            | Technology      |
+| ------------------ | --------------- |
+| Frontend Framework | Nuxt 3 / Vue 3  |
+| Styling            | TailwindCSS     |
+| UI Components      | Nuxt UI         |
+| Backend / CMS      | Directus CMS    |
+| State Management   | Vue Composables |
+| Image Optimization | Nuxt Image      |
+| Deployment         | Vercel          |
 
 ---
 
@@ -79,6 +80,7 @@ npm install
 ```
 
 ---
+
 ---
 
 # Run Development Server
@@ -117,15 +119,15 @@ npm run preview
 
 Displays all available vehicles with detailed information including:
 
-* Brand
-* Model
-* Variant
-* Price
-* Mileage
-* Fuel Type
-* Transmission
-* Ownership
-* Registration Year
+- Brand
+- Model
+- Variant
+- Price
+- Mileage
+- Fuel Type
+- Transmission
+- Ownership
+- Registration Year
 
 ---
 
@@ -133,14 +135,14 @@ Displays all available vehicles with detailed information including:
 
 Supports multiple filtering options:
 
-* Brand
-* Fuel Type
-* Transmission
-* Body Type
-* Ownership
-* Registration Year
-* Price Range
-* KM Driven
+- Brand
+- Fuel Type
+- Transmission
+- Body Type
+- Ownership
+- Registration Year
+- Price Range
+- KM Driven
 
 ---
 
@@ -148,11 +150,11 @@ Supports multiple filtering options:
 
 Users can sort vehicles by:
 
-* Price: Low to High
-* Price: High to Low
-* Newest First
-* Oldest First
-* KM: Low to High
+- Price: Low to High
+- Price: High to Low
+- Newest First
+- Oldest First
+- KM: Low to High
 
 ---
 
@@ -165,13 +167,13 @@ This improves user experience by reducing unnecessary page navigation.
 
 # Performance Optimizations
 
-* Lazy rendering
-* Skeleton loaders
-* Infinite scrolling
-* Optimized API fetching
-* Reusable component structure
-* Responsive image handling
-* Computed state optimization
+- Lazy rendering
+- Skeleton loaders
+- Infinite scrolling
+- Optimized API fetching
+- Reusable component structure
+- Responsive image handling
+- Computed state optimization
 
 ---
 
@@ -179,11 +181,11 @@ This improves user experience by reducing unnecessary page navigation.
 
 # Development Guidelines
 
-* Create new branch from `main`
-* Pull latest changes before starting work
-* Maintain reusable component structure
-* Follow clean and scalable coding practices
-* Keep UI responsive across all devices
+- Create new branch from `main`
+- Pull latest changes before starting work
+- Maintain reusable component structure
+- Follow clean and scalable coding practices
+- Keep UI responsive across all devices
 
 ---
 
