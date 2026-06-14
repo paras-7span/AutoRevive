@@ -12,7 +12,7 @@
 
                     <div class=" w-full relative">
                         <UCarousel ref="carousel" v-slot="{ item }" :items="items" class="w-full" @select="onSelect">
-                            <img :src="item" class="rounded-lg w-full h-95 object-cover" loading="lazy">
+                            <img :src="item" class="rounded-lg w-full h-56 sm:h-72 lg:h-95 object-cover" loading="lazy">
                         </UCarousel>
                         <div
                             class=" text-[10px] text-yellow-800 bg-yellow-100 absolute top-2 right-2 px-2 py-1 rounded-md">
@@ -110,50 +110,44 @@
                 </div>
 
                 <!-- why -->
-                <div class="w-full  border border-gray-200 bg-green-50 mt-6 rounded-lg px-4 py-2">
-                    <p class="font-semibold mb-2 text-xl text-black">Why Choose AutoRevive?</p>
-                    <div class="flex flex-col md:flex-row gap-4 md:gap-2 items-start md:items-center justify-between">
-                        <div class="flex flex-row md:flex-col  items-left px-2">
-                            <NuxtImg src="/icons/MaterialSymbolsShieldOutline.svg" alt="Certified" class="h-12 w-12" />
-                            <div class="flex flex-col ">
-                                <p class="text-sm  text-black font-bold ">Verified Cars</p>
-                                <p class="text-sm  text-black ">All cars are inspected for quality and safety
-                                </p>
+                <div class="w-full border border-gray-200 bg-green-50 mt-6 rounded-lg px-4 py-4">
+                    <p class="font-semibold mb-3 text-xl text-black">Why Choose AutoRevive?</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="flex items-center gap-3 px-2">
+                            <NuxtImg src="/icons/MaterialSymbolsShieldOutline.svg" alt="Certified"
+                                class="h-10 w-10 shrink-0" />
+                            <div>
+                                <p class="text-sm text-black font-bold">Verified Cars</p>
+                                <p class="text-sm text-black">All cars are inspected for quality and safety</p>
                             </div>
-
                         </div>
-                        <div class="flex flex-row md:flex-col items-left px-2">
+                        <div class="flex items-center gap-3 px-2">
                             <NuxtImg src="/icons/MaterialSymbolsDocumentScannerOutlineSharp.svg" alt="Certified"
-                                class="h-10 w-10" />
-                            <div class="flex flex-col ">
-                                <p class="text-sm text-black font-bold ">Transparent Pricing</p>
+                                class="h-10 w-10 shrink-0" />
+                            <div>
+                                <p class="text-sm text-black font-bold">Transparent Pricing</p>
                                 <p class="text-sm text-black">No Hidden Charges or extra fees</p>
-
                             </div>
-
                         </div>
-                        <div class="flex flex-row md:flex-col  items-left ">
+                        <div class="flex items-center gap-3 px-2">
                             <NuxtImg src="/icons/MaterialSymbolsPersonCheckOutline.svg" alt="Certified"
-                                class="h-12 w-12" />
-                            <div class="flex flex-col ">
-                                <p class="text-sm text-black font-bold ">Hassle-free Ownership</p>
-                                <p class="text-sm text-black ">Easy documentation and smooth ownership</p>
-
+                                class="h-10 w-10 shrink-0" />
+                            <div>
+                                <p class="text-sm text-black font-bold">Hassle-free Ownership</p>
+                                <p class="text-sm text-black">Easy documentation and smooth ownership</p>
                             </div>
-
                         </div>
-
                     </div>
-
                 </div>
                 <!-- Share cars -->
                 <div
-                    class="flex mt-6 border border-primary-50 rounded-lg flex-col lg:flex-row  gap-2 px-4 py-2 items-center justify-between">
+                    class="flex mt-6 border border-primary-50 rounded-lg flex-col lg:flex-row  gap-2 px-4 py-2 md:items-center justify-between">
                     <div class="flex flex-col">
                         <p class="text-lg text-black font-bold">Liked this car? </p>
                         <p class="text-sm text-gray-500">Share this car with your friends and family</p>
                     </div>
-                    <UButton label="Share this car" icon="material-symbols:share-outline"
+                    <UButton :label="linkcopied ? 'Link Copied!!' : 'Share this car'"
+                        :icon="!linkcopied ? 'material-symbols:share-outline' : 'mdi:clipboard-check'"
                         class="bg-primary-50 cursor-pointer active:bg-primary-50 hover:bg-primary-50"
                         @click="shareCar" />
 
@@ -173,21 +167,24 @@
                     <p class="text-md  text-gray-500 ">₹ {{ cars?.[0]?.emi_per_month }} EMI/Month </p>
                 </div>
                 <div class="mt-4 grid grid-cols-3 gap-3">
-                    <div class="border flex gap-2 items-center justify-center border-gray-200  rounded-md  p-2">
+                    <div
+                        class="border flex gap-2 flex-col md:flex-row items-center justify-center border-gray-200  rounded-md  p-2">
                         <NuxtImg src="/icons/MaterialSymbolsSpeedRounded.svg" alt="Driven" class="h-6 w-6" />
                         <div class="flex flex-col ">
                             <p class="text-md text-black font-semibold">{{ cars?.[0]?.km_driven }}/km</p>
                             <p class="text-sm">Driven</p>
                         </div>
                     </div>
-                    <div class="border flex gap-2 items-center justify-center border-gray-200  rounded-md  p-2">
+                    <div
+                        class="border flex flex-col md:flex-row gap-2 items-center justify-center border-gray-200  rounded-md  p-2">
                         <NuxtImg src="/icons/BiFuelPumpFill.svg" alt="Fuel Type" class="h-6 w-6" />
                         <div class="flex flex-col ">
                             <p class="text-md text-black font-semibold">{{ cars?.[0]?.fuel_type }}</p>
                             <p class="text-sm">Fuel Type</p>
                         </div>
                     </div>
-                    <div class="border flex gap-2 items-center justify-center border-gray-200  rounded-md  p-2">
+                    <div
+                        class="border flex flex-col md:flex-row gap-2 items-center justify-center border-gray-200  rounded-md  p-2">
                         <NuxtImg src="/icons/MaterialSymbolsAutoTransmission.svg" alt="Transmission" class="h-6 w-6" />
                         <div class="flex flex-col ">
                             <p class="text-md text-black font-semibold">{{ cars?.[0]?.transmission }}</p>
@@ -326,8 +323,10 @@ useSeoMeta({
     twitterImage: getAssetsUrl(cars.value?.[0]?.cover_image?.[0])
 })
 
+const linkcopied = ref(false)
 const shareCar = () => {
     navigator.clipboard.writeText(window.location.href)
-    alert('Link Copied!!')
+    linkcopied.value = true
+
 }
 </script>
