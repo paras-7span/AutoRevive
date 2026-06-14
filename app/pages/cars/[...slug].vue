@@ -60,7 +60,7 @@
                             </div>
 
                             <div class="flex justify-between border-b border-gray-100 pb-3">
-                                <span class="font-semibold text-gray-900">Year</span>
+                                <span class="font-semibold text-gray-900">Year of Registration</span>
                                 <span class="font-semibold text-gray-500">{{ cars?.[0]?.registration_year }}</span>
                             </div>
 
@@ -76,13 +76,13 @@
                         <!-- Right Column -->
                         <div class="space-y-3">
                             <div class="flex justify-between border-b border-gray-100 pb-3">
-                                <span class="font-semibold text-gray-900">Discounted Price</span>
-                                <span class="font-semibold text-gray-500">{{ cars?.[0]?.discounted_price }}</span>
+                                <span class="font-semibold text-gray-900">Original Price</span>
+                                <span class="font-semibold text-gray-500">{{ cars?.[0]?.original_price }}</span>
                             </div>
 
                             <div class="flex justify-between border-b border-gray-100 pb-3">
                                 <span class="font-semibold text-gray-900">Milage</span>
-                                <span class="font-semibold text-gray-500">{{ cars?.[0]?.milage }} km</span>
+                                <span class="font-semibold text-gray-500">{{ cars?.[0]?.milage }} km/ltr</span>
                             </div>
                             <div class="flex justify-between border-b border-gray-100 pb-3">
                                 <span class="font-semibold text-gray-900">Engine</span>
@@ -169,7 +169,7 @@
                         {{ cars?.[0]?.model }}
                         {{ cars?.[0]?.variant }}
                     </h1>
-                    <p class="text-3xl text-black font-bold">₹ {{ cars?.[0].original_price }}</p>
+                    <p class="text-3xl text-black font-bold">₹ {{ cars?.[0].discounted_price }}</p>
                     <p class="text-md  text-gray-500 ">₹ {{ cars?.[0]?.emi_per_month }} EMI/Month </p>
                 </div>
                 <div class="mt-4 grid grid-cols-3 gap-3">
