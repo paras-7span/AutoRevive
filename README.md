@@ -2,10 +2,12 @@
 
 ## Modern car marketplace platform built with **Nuxt 3**, **Vue 3**, **Directus CMS**, and **TailwindCSS** featuring advanced filtering, infinite scroll pagination, dynamic car pages, and responsive UI design.
 
-# Live Demo
-- <a href="https://your-demo-url.com" target="_blank" rel="noopener noreferrer">🚀 View Live Demo</a>
-# Loom Link
-- <a href="https://www.loom.com/share/f12fac057a2c49e1a848dada71b1be77" target="_blank">View Loom</a>
+
+- ## Live Demo
+[🚕 View Live Demo](https://https://auto-revive.vercel.app/)
+
+## Loom Link
+[🎥 View Loom](https://www.loom.com/share/f12fac057a2c49e1a848dada71b1be77)
 
 # Features
 
