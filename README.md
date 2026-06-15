@@ -2,6 +2,10 @@
 
 ## Modern car marketplace platform built with **Nuxt 3**, **Vue 3**, **Directus CMS**, and **TailwindCSS** featuring advanced filtering, infinite scroll pagination, dynamic car pages, and responsive UI design.
 
+# Live Demo
+- https://auto-revive.vercel.app/
+
+
 # Features
 
 - 🚗 Modern car listing platform
