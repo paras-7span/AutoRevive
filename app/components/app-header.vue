@@ -1,5 +1,4 @@
 <script setup>
-import { useRouter, useRoute } from '#app';
 const router = useRouter();
 const route = useRoute();
 

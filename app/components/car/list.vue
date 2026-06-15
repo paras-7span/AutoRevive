@@ -139,6 +139,7 @@ const visibleCars = computed(() => {
 })
 
 // load more
+
 async function loadMoreCars() {
 
     if (
