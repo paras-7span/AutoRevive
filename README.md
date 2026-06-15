@@ -194,3 +194,7 @@ This improves user experience by reducing unnecessary page navigation.
 Developed by **Paras Bhalala**
 
 ---
+
+
+<img width="1024" height="1536" alt="arch" src="https://github.com/user-attachments/assets/6ed4dbe4-337d-467b-9e75-24969b722e9e" />
+
