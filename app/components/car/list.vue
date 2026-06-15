@@ -402,7 +402,6 @@ function reconnectObserver() {
 onMounted(async () => {
     await fetchcars()
     await initFilters()
-
     reconnectObserver()
 
 })

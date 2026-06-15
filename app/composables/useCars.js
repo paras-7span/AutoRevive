@@ -2,7 +2,7 @@
 export const useCarFilters = async (fetchcars) => {
     const router = useRouter()
     const route = useRoute()
-
+    // declaration
     const priceRange = ref([])
     const registrationYear = ref([])
     const kmDriven = ref([])
@@ -132,9 +132,7 @@ export const useCarFilters = async (fetchcars) => {
         router.push({
             path: '/cars'
         })
-
         fetchcars()
-
         nextTick(() => {
             isResetting = false
         })
