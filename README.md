@@ -199,7 +199,7 @@ This improves user experience by reducing unnecessary page navigation.
 ---
 
 # Architecture of AutoRevive
-<img width="1024" height="1536" alt="Architecture Image" src="https://github.com/user-attachments/assets/6ed4dbe4-337d-467b-9e75-24969b722e9e" />
+<img width="1024" height="1536" alt="architecture" src="https://github.com/user-attachments/assets/a252eead-9be1-43e6-a46f-d0b9d0213a25" />
 
 ---
 
