@@ -4,7 +4,7 @@
 
 
 - ## Live Demo
-[🚕 View Live Demo](https://https://auto-revive.vercel.app/)
+[🚕 View Live Demo](https://auto-revive.vercel.app/)
 
 ## Loom Link
 [🎥 View Loom](https://www.loom.com/share/f12fac057a2c49e1a848dada71b1be77)
