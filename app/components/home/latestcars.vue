@@ -22,6 +22,13 @@
                 <USkeleton class="h-10 w-full" />
             </div>
         </div>
+        <div v-if="latestCars.length == 0">
+            <UAlert description="We don't have any latest cars. Please check back later."
+                title="No latest cars found"
+                color="neutral"
+                variant="subtle"
+                />
+    </div>
 
         <UPageGrid v-else :ui="{ base: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4' }">
             <CarCard :car="car" v-for="car in latestCars" :key="car.id" />
