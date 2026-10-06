@@ -11,11 +11,12 @@ export default defineNuxtConfig({
       assetsUrl: 'https://directus-dj3o.onrender.com/assets',
       directus: {
         url: 'https://directus-dj3o.onrender.com'
-      }
+      },
+      authApiUrl: process.env.NUXT_PUBLIC_AUTH_API_URL
     }
   },
 
- pwa: {
+  pwa: {
     registerType: 'autoUpdate',
 
     injectRegister: 'auto',
