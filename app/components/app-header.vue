@@ -44,6 +44,8 @@ const debouncegetcars = useDebounceFn(() => {
                     class="text-black hover:bg-gray-100 hover:text-black" color="neutral" />
                 <UButton icon="material-symbols:directions-car-outline" label="Buy Cars" to="/cars" variant="ghost"
                     class="text-black hover:bg-gray-100 hover:text-black" color="neutral" />
+                <UButton icon="i-heroicons-document-text" label="Blog" to="/blogs" variant="ghost"
+                    class="text-black hover:bg-gray-100 hover:text-black" color="neutral" />
             </div>
         </template>
 
@@ -105,6 +107,8 @@ const debouncegetcars = useDebounceFn(() => {
                     class="text-black hover:bg-primary-600 hover:text-white w-full justify-start" color="neutral" />
                 <UButton icon="material-symbols:directions-car-outline" label="Buy Cars" to="/cars" variant="ghost"
                     class="text-black hover:bg-secondary-600 hover:text-white w-full justify-start" color="neutral" />
+                <UButton icon="i-heroicons-document-text" label="Blog" to="/blogs" variant="ghost"
+                    class="text-black hover:bg-primary-600 hover:text-white w-full justify-start" color="neutral" />
 
                 <!-- Mobile Auth Buttons -->
                 <div class="pt-4 border-t border-gray-200 dark:border-gray-800 space-y-2">

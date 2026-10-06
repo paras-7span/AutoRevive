@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "directus": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@directus/content-mcp@latest"
+      ],
+      "env": {
+        "DIRECTUS_URL": "https://directus-dj3o.onrender.com",
+        "DIRECTUS_TOKEN": "qoxRyGEhPzqgQKb8XenzdpXTpnXeua_D"
+      }
+    }
+  }
+}
