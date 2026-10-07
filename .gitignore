@@ -5,6 +5,8 @@
 .nitro
 .cache
 dist
+.agents
+scratch
 
 # Node dependencies
 node_modules
