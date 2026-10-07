@@ -57,15 +57,9 @@ const debouncegetcars = useDebounceFn(() => {
 
                 <!-- Authenticated User State -->
                 <div v-if="isAuthenticated && user" class="hidden md:flex items-center gap-2">
-                    <div class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs font-medium">
-                        <NuxtImg
-                            v-if="user.avatar"
-                            :src="user.avatar"
-                            :alt="user.name"
-                            class="w-6 h-6 rounded-full object-cover"
-                        />
-                        <span class="max-w-[120px] truncate text-gray-800 dark:text-gray-200">
-                            {{ user.name }}
+                    <div class="flex items-center gap-2 px-2.5 py-1 rounded-full  text-md font-bold">
+                        <span class="w-8 h-8 font-medium text-center flex items-center justify-center text-gray-800 bg-red-300  rounded-full">
+                           {{ user.name[0].toUpperCase() }}
                         </span>
                     </div>
                     <UButton
@@ -120,9 +114,9 @@ const debouncegetcars = useDebounceFn(() => {
                                 :alt="user.name"
                                 class="w-8 h-8 rounded-full"
                             />
-                            <div class="flex-1 truncate">
-                                <p class="text-sm font-semibold">{{ user.name }}</p>
-                                <p class="text-xs text-gray-500 truncate">{{ user.email }}</p>
+                            <div class="flex-1 truncate ">
+                                <p class="text-sm font-semibold">{{ user.name[0].toUpperCase() }}</p>
+                                <!-- <p class="text-xs text-gray-500 truncate">{{ user.email }}</p> -->
                             </div>
                         </div>
                         <UButton
