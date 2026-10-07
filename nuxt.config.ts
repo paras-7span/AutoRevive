@@ -8,9 +8,9 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      assetsUrl: 'https://directus-dj3o.onrender.com/assets',
+      assetsUrl: process.env.NUXT_PUBLIC_ASSETS_URL,
       directus: {
-        url: 'https://directus-dj3o.onrender.com'
+        url: process.env.NUXT_PUBLIC_DIRECTUS_URL
       },
       authApiUrl: process.env.NUXT_PUBLIC_AUTH_API_URL
     }
